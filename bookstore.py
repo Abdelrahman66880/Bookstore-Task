@@ -58,3 +58,19 @@ class ShowcaseBook(Book):
     
     def buy(self, quantity, email, address):
         raise Exception(f"{self.title} is not for sale")
+
+# ===================================
+# BUILD THE FACTORY
+# ===================================
+
+class BookFactory:
+    @staticmethod
+    def create_book(book_type, **kwargs):
+        if book_type == "PaperBook":
+            return PapaerBook(**kwargs)
+        elif book_type == "EBook":
+            return EBook(**kwargs)
+        elif book_type == "ShowcaseBook":
+            return ShowcaseBook(**kwargs)
+        else:
+            raise Exception("Invalid Book Type")
