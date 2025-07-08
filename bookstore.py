@@ -1,0 +1,21 @@
+from abc import ABC, abstractmethod
+from datetime import datetime
+
+
+class Book(ABC):
+    def __init__(self, isbn, title, author, year, price):
+        self.isbn = isbn
+        self.title = title
+        self.author = author
+        self.year = year
+        self.price = price
+        
+        
+    @abstractmethod
+    def buy(self, quantity, email, address):
+        pass
+    
+    def is_outdated(self, current_year, years_threshold):
+        return (current_year - self.year) > years_threshold
+
+
