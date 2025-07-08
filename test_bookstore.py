@@ -38,6 +38,10 @@ class BookStorFulltest:
         inventory.add_book(paper_book)
         inventory.add_book(ebook)
         inventory.add_book(showcase_book)
+        
+        
+        # Remove outdated books which they are greateer than 15 years
+        inventory.remove_outdated_books(15)
 
 if __name__ == "__main__":
     BookStorFulltest.run_tests()
