@@ -19,3 +19,22 @@ class Book(ABC):
         return (current_year - self.year) > years_threshold
 
 
+
+# =======================
+# Different types o Books
+# ========================
+
+
+class PapaerBook(Book):
+    def __init__(self, isbn, title, author, year, price, stock):
+        super().__init__(isbn, title, author, year, price)
+        self.stock = stock
+    
+    def buy(self, quantity, email, address):
+        if self.stock < quantity:
+            raise Exception("Papaer book not enough stcok")
+        
+        self.stock -= quantity
+        total = self.price  * quantity
+        print(f"Shipping paper book {self.title} ot {address}")
+        return total
