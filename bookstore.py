@@ -74,3 +74,35 @@ class BookFactory:
             return ShowcaseBook(**kwargs)
         else:
             raise Exception("Invalid Book Type")
+        
+
+# ========================================
+# Iventory Managment
+# ========================================
+
+
+class Inventory:
+    def __init__(self):
+        self.books = {}
+    
+    
+    def add_book(self, book):
+        self.books[book.isbn] = book
+        print(f"The {book.title} is added to the inventory")
+    
+    
+    def remove_outdated_books(self, years_threshold):
+        current_year = datetime.now().year
+        outdated_books = [isbn for isbn, book in self.books.items() if book.is_outdated(current_year, years_threshold)]
+        for isbn in outdated_books:
+            removed_book = self.books.pop(isbn)
+            print("Removed Outdated books")
+        return outdated_books
+    
+    def buy_book(self, isbn, quantity, email, address):
+        if isbn not in self.books:
+            raise Exception("Quantum book store: Book not found")
+        book = self.books[isbn]
+        paid_amount = book.buy(quantity, email, address)
+        print(f"Quantum book store: Paid amount: ${paid_amount}")
+        return paid_amount
