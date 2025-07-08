@@ -12,11 +12,21 @@ class BookStorFulltest:
             author="Abdelrahman Mohammed",
             year=2010,
             price= 50,
-            stock=10
+            stock=10,
+        )
+        
+        ebook = BookFactory.create_book(
+            "EBook",
+            isbn="U013",
+            title="Algorithms", 
+            author="Eng. Abdelrahman Mohammed",
+            year=2020,
+            price=30,
+            file_type="pdf",
         )
         
         inventory.add_book(paper_book)
-
+        inventory.add_book(ebook)
 
 if __name__ == "__main__":
     BookStorFulltest.run_tests()
