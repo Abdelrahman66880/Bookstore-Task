@@ -52,3 +52,9 @@ class EBook(Book):
         return total
 
 
+class ShowcaseBook(Book):
+    def __init__(self, isbn, title, author, year):
+        super().__init__(isbn, title, author, year, price = 0)
+    
+    def buy(self, quantity, email, address):
+        raise Exception(f"{self.title} is not for sale")
