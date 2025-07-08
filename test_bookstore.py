@@ -42,6 +42,22 @@ class BookStorFulltest:
         
         # Remove outdated books which they are greateer than 15 years
         inventory.remove_outdated_books(15)
+        
+        try:
+            inventory.buy_book('U012', 2, email='starnger@example.com', address='123 Quantum St')
+        except Exception as e:
+            print(e)
+
+        try:
+            inventory.buy_book('U013', 1, email='stranger@example.com', address='')
+        except Exception as e:
+            print(e)
+
+        try:
+            inventory.buy_book('U001', 1, email='stranger@example.com', address='')
+        except Exception as e:
+            print(e)
+        
 
 if __name__ == "__main__":
     BookStorFulltest.run_tests()
