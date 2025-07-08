@@ -25,8 +25,19 @@ class BookStorFulltest:
             file_type="pdf",
         )
         
+        showcase_book = BookFactory.create_book(
+            'ShowcaseBook',
+            isbn='U001',
+            title='Machine learning',
+            author='Dr. Mohammed Fathi',
+            year=1995
+        )
+        
+        
+        # the add process in the inveotary
         inventory.add_book(paper_book)
         inventory.add_book(ebook)
+        inventory.add_book(showcase_book)
 
 if __name__ == "__main__":
     BookStorFulltest.run_tests()
