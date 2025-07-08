@@ -38,3 +38,17 @@ class PapaerBook(Book):
         total = self.price  * quantity
         print(f"Shipping paper book {self.title} ot {address}")
         return total
+
+
+class EBook(Book):
+    def __init__(self, isbn, title, author, year, price, file_type):
+        super().__init__(isbn, title, author, year, price)
+        self.file_type = file_type
+        
+    
+    def buy(self, quantity, email, address):
+        total = self.price * quantity
+        print(f"we will send the {self.title} to the {address}")
+        return total
+
+
